@@ -1,4 +1,4 @@
-fx_version 'cerluean'
+fx_version 'cerulean'
 game 'gta5'
 
 author '9M - Studios - clxw'
