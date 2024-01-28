@@ -1,10 +1,8 @@
 # clxw-xmenu for Fivem - README
 
-![](https://img.shields.io/github/downloads/clxw1337/clxw-xmenu/total?logo=github)
 ![](https://img.shields.io/github/contributors/clxw1337/clxw-xmenu?logo=github)
 ![](https://img.shields.io/github/v/release/clxw1337/clxw-xmenu?logo=github) 
 
-> **Preview:**
 <img src="https://cdn.upload.vodka/files/4QBAT9FQ">
 
 ### Introduction
@@ -22,7 +20,7 @@ clxw-xmenu is a versatile and customizable menu system for FiveM servers. It all
 - **Customizable Design**: You can customize every color of the UI by simply changing the color in the CSS Config!
 
 ---
-### Example of Adding an Item
+### Item Example
 ```
 {
     label = "Your Label",
@@ -33,7 +31,7 @@ clxw-xmenu is a versatile and customizable menu system for FiveM servers. It all
 }
 ```
 
-### Example of Adding a Submenu
+### Submenu Example
 ```
 {
     label = "Submenu Label",
