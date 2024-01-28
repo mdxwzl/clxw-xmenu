@@ -1,62 +1,40 @@
-# clxw-xmenu for Fivem - README
+# web
 
-![](https://img.shields.io/github/downloads/clxw1337/clxw-xmenu/total?logo=github)
-![](https://img.shields.io/github/contributors/clxw1337/clxw-xmenu?logo=github)
-![](https://img.shields.io/github/v/release/clxw1337/clxw-xmenu?logo=github) 
+This template should help get you started developing with Vue 3 in Vite.
 
-> **Preview:**
-<img src="https://cdn.upload.vodka/files/4QBAT9FQ">
+## Recommended IDE Setup
 
-### Introduction
----
-clxw-xmenu is a versatile and customizable menu system for FiveM servers. It allows server administrators to create a dynamic and interactive menu with multiple options and submenus. The menu is easily accessible and can be configured to cater to various server needs.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-### Features
-- **Keybind Trigger**: Default keybind is set to 'X', which can be pressed to open the main menu.
-- **Allow Movement**: Players can move around while the menu is open.
-- **Disable Left Click**: Prevents accidental actions like hitting someone when the menu is open and movement is allowed.
-- **Hold to Show**: The menu will display as long as the keybind is held.
-- **Submenu Support**: Unlimited nesting of submenus for organizing multiple actions.
-- **Custom Icons**: Each menu item can have its own icon for easy identification.
-- **Event Execution**: Each menu item has its own execution function, so you can customize it to your needs.
-- **Customizable Design**: You can customize every color of the UI by simply changing the color in the CSS Config!
+## Type Support for `.vue` Imports in TS
 
----
-### Example of Adding an Item
-```
-{
-    label = "Your Label",
-    icon = "streamline:your-icon",
-    execute = function()
-        -- Your custom code or event trigger
-    end
-}
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
 ```
 
-### Example of Adding a Submenu
-```
-{
-    label = "Submenu Label",
-    icon = "streamline:your-icon",
-    sub = true,
-    items = {
-        -- Submenu items
-    }
-}
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-## Usage
-- Press the configured keybind ('X' by default) to open the menu.
-- Navigate through the options using the mouse or keyboard.
-- Click on an option to execute its associated action or to open a submenu.
-- Hold the keybind if `HoldToShow` is enabled, or release it to close the menu.
+### Type-Check, Compile and Minify for Production
 
-## Customization
-- Icons: Customize icons using the icon sets of [Iconify](https://icon-sets.iconify.design).
-- Execution: Attach custom functions to menu options for specific actions.
-- Submenus: Organize complex actions into submenus for better accessibility and user experience.
-
-## Notes
-- Ensure that the keybind does not conflict with other in-game keybinds.
-- Test the menu and submenus thoroughly to ensure all actions are executing correctly.
-- The menu can be expanded with more advanced features depending on server requirements.
+```sh
+npm run build
+```

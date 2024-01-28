@@ -1,0 +1,19 @@
+:root{
+    --primary: #9d38d7;
+    --primary-shadow: rgba(187, 69, 255, 0.5);
+    --primary-white: #FFFFFF;
+    --primary-stroke: #ab45ff86;
+    --primary-gradient-start: #5c149f;
+    --primary-gradient-stop: #6906ba;
+    
+    --secondary: #8a38d791;
+    --secondary-fill: #8238d7;
+    --secondary-gradient-start: #49149f1e;
+    --secondary-gradient-stop: #2e27331e;
+    
+    --close-primary: #D73838;
+    --close-shadow: rgba(255, 69, 69, 0.5);
+    --close-stroke: #FF4949;
+
+    --background-blur: radial-gradient(ellipse at center, #0D0D1A 0%, rgba(13, 13, 26, 0.75), rgba(13, 13, 26, 0.00) 50%);
+}
