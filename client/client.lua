@@ -30,6 +30,7 @@ RegisterCommand('openXMenu', function()
         
     SendNUIMessage({ action = "toggle", state = true })
     SetNuiFocus(true, true)
+    SetCursorLocation(0.5, 0.5)
     SetNuiFocusKeepInput(Config.AllowMovement)
     uiOpen = true
 end, false)
