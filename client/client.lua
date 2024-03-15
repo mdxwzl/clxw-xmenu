@@ -26,13 +26,20 @@ local function RemoveExecuteFunctionsFromItems(items)
 end
 
 RegisterCommand('openXMenu', function()
-    if #Config.Items == 0 then return; end
+    if uiOpen then
+        SendNUIMessage({ action = "toggle", state = false })
+        SetNuiFocus(false, false)
+        SetNuiFocusKeepInput(false)
+        uiOpen = false
+    else
+        if #Config.Items == 0 then return; end
         
-    SendNUIMessage({ action = "toggle", state = true })
-    SetNuiFocus(true, true)
-    SetCursorLocation(0.5, 0.5)
-    SetNuiFocusKeepInput(Config.AllowMovement)
-    uiOpen = true
+        SendNUIMessage({ action = "toggle", state = true })
+        SetNuiFocus(true, true)
+        SetCursorLocation(0.5, 0.5)
+        SetNuiFocusKeepInput(Config.AllowMovement)
+        uiOpen = true
+    end
 end, false)
 
 RegisterKeyMapping('openXMenu', 'Open X-Menu', 'keyboard', Config.Keybind)
@@ -53,13 +60,19 @@ RegisterNUICallback('execute', function(data)
     end
 end)
 
-if Config.DisableLeftClick then
+if Config.AllowMovement then
     CreateThread(function()
         while true do
             if uiOpen then
-                DisableControlAction(0, 24, true)
+                if Config.DisableMouseClicks then
+                    DisableControlAction(0, 24, true)
+                    DisableControlAction(0, 25, true)
+                end
+                if Config.DisableMouseMovement then
+                    DisableControlAction(0, 1)
+                    DisableControlAction(0, 2) 
+                end
             end
-            
             Wait(uiOpen and 0 or 1000)
         end
     end)

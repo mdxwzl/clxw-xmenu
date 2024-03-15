@@ -2,7 +2,8 @@ Config = {
     Keybind = 'X',
 
     AllowMovement = true,
-    DisableLeftClick = true, -- prevents accidentally hitting someone if allowMovement is enabled
+    DisableMouseClicks = true, -- prevents accidentally hitting or aiming at someone if allowMovement is enabled
+    DisableMouseMovement = true, -- prevents looking around while ui is open if allowMovement is enabled
     HoldToShow = true,
 
     --- ICON SOURCE: https://icon-sets.iconify.design/
