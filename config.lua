@@ -99,5 +99,5 @@ Config = {
             end,
             close = true,
         },
-    }
+    },
 }
