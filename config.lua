@@ -1,5 +1,6 @@
 Config = {
-    Keybind = 'X',
+    
+    Keybind = "X",
     AllowMovement = true,
     DisableMouseClicks = true, -- prevents accidentally hitting or aiming at someone if AllowMovement is enabled
     DisableMouseMovement = true, -- prevents looking around while ui is open if AllowMovement is enabled
