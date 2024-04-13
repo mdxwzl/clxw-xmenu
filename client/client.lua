@@ -1,4 +1,8 @@
+--[[ GLOBAL VARIABLES ]]--
+
 local uiOpen, executions, uniqueIdCounter = false, {}, 0
+
+--[[ FUNCTIONS ]]--
 
 local function AddUniqueIdsToItems(items)
     for _, item in pairs(items) do
@@ -25,6 +29,31 @@ local function RemoveExecuteFunctionsFromItems(items)
     return items
 end
 
+local function findAndExecuteItem(items, uniqueId)
+    for _, item in ipairs(items) do
+        if item.uniqueId == uniqueId then
+            executions[uniqueId]()
+            if item.close then
+                SendNUIMessage({ action = "toggle", state = false })
+                SetNuiFocus(false, false)
+                SetNuiFocusKeepInput(false)
+                uiOpen = false
+            end
+            return true
+        end
+        if item.items then
+            if findAndExecuteItem(item.items, uniqueId) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+--[[ NUI ]]--
+
+RegisterKeyMapping('openXMenu', 'Open X-Menu', 'keyboard', Config.Keybind)
+
 RegisterCommand('openXMenu', function()
     if uiOpen then
         SendNUIMessage({ action = "toggle", state = false })
@@ -41,24 +70,6 @@ RegisterCommand('openXMenu', function()
         uiOpen = true
     end
 end, false)
-
-RegisterKeyMapping('openXMenu', 'Open X-Menu', 'keyboard', Config.Keybind)
-
-RegisterNUICallback('close', function()
-    SetNuiFocus(false, false)
-    uiOpen = false
-end)
-
-RegisterNUICallback('init', function(data, cb)
-    Config.Items = AddUniqueIdsToItems(Config.Items)
-    cb({ openKey = Config.Keybind, items = RemoveExecuteFunctionsFromItems(Config.Items), holdToShow = Config.HoldToShow})
-end)
-
-RegisterNUICallback('execute', function(data)
-    if executions[data.uniqueId] then
-        executions[data.uniqueId]()
-    end
-end)
 
 if Config.AllowMovement then
     CreateThread(function()
@@ -77,3 +88,21 @@ if Config.AllowMovement then
         end
     end)
 end
+
+--[[ NUI CALLBACKS ]]--
+
+RegisterNUICallback('init', function(data, cb)
+    Config.Items = AddUniqueIdsToItems(Config.Items)
+    cb({ openKey = Config.Keybind, items = RemoveExecuteFunctionsFromItems(Config.Items), holdToShow = Config.HoldToShow})
+end)
+
+RegisterNUICallback('execute', function(data)
+    if executions[data.uniqueId] then
+        findAndExecuteItem(Config.Items, data.uniqueId)
+    end
+end)
+
+RegisterNUICallback('close', function()
+    SetNuiFocus(false, false)
+    uiOpen = false
+end)
