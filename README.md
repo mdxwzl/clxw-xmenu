@@ -3,7 +3,7 @@
 ![](https://img.shields.io/github/contributors/clxw1337/clxw-xmenu?logo=github)
 ![](https://img.shields.io/github/v/release/clxw1337/clxw-xmenu?logo=github) 
 
-<img src="https://cdn.upload.vodka/files/4QBAT9FQ">
+<img src="https://cdn.lunaDrive.io/files/4QBAT9FQ">
 
 ### Introduction
 ---
